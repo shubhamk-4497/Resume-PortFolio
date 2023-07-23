@@ -1,0 +1,12 @@
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/your-image-name', '.']
+
+  # Push the Docker image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/your-image-name']
+
+  # Deploy the application to App Engine
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args: ['app', 'deploy', 'app.yaml']
